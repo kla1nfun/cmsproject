@@ -51,10 +51,10 @@ class Story(models.Model):
         ordering = ['modified']
         verbose_name_plural = "stories"
 
-def save (self):
-    self.html_content = markdown(self.markdown_content)
-    self.modified = datetime.datetime.now()
-    super(Story, self).save()
+    def save (self):
+        self.html_content = markdown(self.markdown_content)
+        self.modified = datetime.datetime.now()
+        super(Story, self).save()
 
 
     admin_objects = models.Manager()
@@ -64,11 +64,11 @@ def save (self):
     def get_absolute_url(self):
         return ("cms-story", (),{'slug':self.slug})
 
-    class StoryAdmin(admin.ModelAdmin):
-        list_display = ('title', 'owner', 'status', 'created', 'modified')
-        search_fields = ('title', 'content')
-        list_filter = ('status', 'owner', 'created', 'modified')
-        prepopulated_fields = {'slug': ('title',)}
+class StoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'owner', 'status', 'created', 'modified')
+    search_fields = ('title', 'content')
+    list_filter = ('status', 'owner', 'created', 'modified')
+    prepopulated_fields = {'slug': ('title',)}
 
 
-    admin.site.register(Story, StoryAdmin)
+admin.site.register(Story, StoryAdmin)
