@@ -8,10 +8,12 @@ from markdown import markdown
 # Create your models here.
 VIEWABLE_STATUS = [3, 4]
 
+
 class ViewableManager(models.Manager):
     def get_query_set(self):
         default_queryset = super(ViewableManager, self).get_query_set()
         return default_queryset.filter(status__in=VIEWABLE_STATUS)
+
 
 class Category(models.Model):
     label = models.CharField(blank=True, max_length=50)
@@ -23,10 +25,12 @@ class Category(models.Model):
     def __unicode__(self):
         return self.label
 
+
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('label',)}
 
-admin.site.register(Category,CategoryAdmin)
+admin.site.register(Category, CategoryAdmin)
+
 
 class Story(models.Model):
 
@@ -56,13 +60,13 @@ class Story(models.Model):
         self.modified = datetime.datetime.now()
         super(Story, self).save()
 
-
     admin_objects = models.Manager()
     objects = ViewableManager()
 
-    @permalink
+    @models.permalink
     def get_absolute_url(self):
-        return ("cms-story", (),{'slug':self.slug})
+        return "cms-story", (), {'slug': self.slug}
+
 
 class StoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'owner', 'status', 'created', 'modified')
