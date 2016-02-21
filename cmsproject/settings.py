@@ -50,16 +50,15 @@ USE_TZ = True
 
 _PATH = os.path.abspath(os.path.dirname(__file__))
 
-MEDIA_ROOT = os.path.join(_PATH, 'tamplates', 'media')
+MEDIA_ROOT = os.path.join(_PATH, 'public', 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(_PATH, 'templates', 'static')
+STATIC_ROOT = os.path.join(_PATH, 'public', 'static')
 STATIC_URL = '/static/'
 
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(_PATH, 'templates', 'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
