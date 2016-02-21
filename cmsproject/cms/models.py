@@ -51,7 +51,7 @@ class Story(models.Model):
         ordering = ['modified']
         verbose_name_plural = "stories"
 
-    def save (self):
+    def save(self, force_insert=False, force_update=False, using=None):
         self.html_content = markdown(self.markdown_content)
         self.modified = datetime.datetime.now()
         super(Story, self).save()
