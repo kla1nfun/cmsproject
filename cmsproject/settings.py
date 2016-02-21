@@ -50,16 +50,16 @@ USE_TZ = True
 
 _PATH = os.path.abspath(os.path.dirname(__file__))
 
-MEDIA_ROOT = os.path.join(_PATH, 'files', 'media')
+MEDIA_ROOT = os.path.join(_PATH, 'tamplates', 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(_PATH, 'files', 'static')
+STATIC_ROOT = os.path.join(_PATH, 'templates', 'static')
 STATIC_URL = '/static/'
 
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(_PATH, 'files', 'static'),
+    os.path.join(_PATH, 'templates', 'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -97,7 +97,7 @@ ROOT_URLCONF = 'cmsproject.urls'
 WSGI_APPLICATION = 'cmsproject.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(_PATH, 'files',),
+    os.path.join(_PATH, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

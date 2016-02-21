@@ -17,4 +17,4 @@ def search(request):
         story_list = Story.objects.filter(Q(title__contains=term) |
                                           Q(markdown_content__contains=term))
         heading = "Search results"
-    return render_to_response("cms/story_list.html", locals())
+    return render_to_response("story_list.html", locals())
